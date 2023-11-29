@@ -80,7 +80,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <nav className="navbar  fixed z-10  bg-slate-500   text-white">
+      <nav className="navbar     z-10  bg-slate-500   text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
