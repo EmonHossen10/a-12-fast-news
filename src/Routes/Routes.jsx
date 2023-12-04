@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home";
 import AllArticle from "../Components/AllArticle";
+import AddArticle from "../Components/AddArticle";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         path:"/allArticle",
         element:<AllArticle></AllArticle>,
         loader: () => fetch("http://localhost:5000/articles"),
+      },
+      {
+        path:"/addArticle",
+        element:<AddArticle></AddArticle>
       }
     ],
   },
