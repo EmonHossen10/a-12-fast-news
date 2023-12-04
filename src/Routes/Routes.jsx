@@ -4,6 +4,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home";
 import AllArticle from "../Components/AllArticle";
 import AddArticle from "../Components/AddArticle";
+import Login from "../Pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
       {
         path:"/addArticle",
         element:<AddArticle></AddArticle>
-      }
+      },
+     {
+      path:"/login",
+      element:<Login></Login>
+     }
     ],
   },
 ]);
