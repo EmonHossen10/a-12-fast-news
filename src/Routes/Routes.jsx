@@ -16,12 +16,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/articles"),
+        loader: () => fetch("https://fast-news-server.vercel.app/articles"),
       },
       {
         path:"/allArticle",
         element:<AllArticle></AllArticle>,
-        loader: () => fetch("http://localhost:5000/articles"),
+        loader: () => fetch("https://fast-news-server.vercel.app/articles"),
       },
       {
         path:"/addArticle",
