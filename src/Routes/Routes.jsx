@@ -5,6 +5,7 @@ import Home from "../Pages/Home";
 import AllArticle from "../Components/AllArticle";
 import AddArticle from "../Components/AddArticle";
 import Login from "../Pages/Login";
+import Registration from "../Pages/Registration";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
      {
       path:"/login",
       element:<Login></Login>
+     },
+     {
+      path:"/registration",
+      element:<Registration></Registration>
      }
     ],
   },
