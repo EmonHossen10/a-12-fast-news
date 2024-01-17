@@ -1,22 +1,30 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   const { user, logout } = useContext(AuthContext);
-  const handleLogOut=()=>{
+  const handleLogOut = () => {
     logout()
-    .then(()=>{
-      Swal.fire({
-              icon: "success",
-              title: "Successfully added",
-              text: "User Logout Successfully",
-            });
-    })
-    .catch(error=>{console.log(error)})
-  }
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Successfully added",
+          text: "User Logout Successfully",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const navOptions = (
     <>
@@ -126,25 +134,81 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal  mr-80 px-1">{navOptions}</ul>
         </div>
-        {user ? (
-          <>
-          <span>{user?.displayName}</span>
-          <span><img src={user?.photoURL} alt="" /></span>
-            <button onClick={handleLogOut} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline transform transition-transform duration-300 flex items-center">
-              <IoLogOut className="inline-block mr-2" />
-              Logout
-            </button>
-          </>
-        ) : (
-          <div>
-            <Link to="/login">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline transform transition-transform duration-300 flex items-center">
-                <IoLogIn className="inline-block mr-2" />
-                Login
-              </button>
-            </Link>
-          </div>
-        )}
+        <div>
+          {user ? (
+            <>
+              {/* <div className="dropdown dropdown-bottom text-black avatar pr-32">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className=" w-16 rounded-full m-1"
+                >
+                  <img src={user?.photoURL} alt="" />
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <span>{user?.displayName}</span>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogOut}
+                      className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline transform transition-transform duration-300 flex items-center"
+                    >
+                      <IoLogOut className="inline-block mr-2" />
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div> */}
+              <div className={`relative inline-block ${isOpen ? "group" : ""}`}>
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="w-16 rounded-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  onClick={toggleDropdown}
+                >
+                  <img
+                    src={user?.photoURL}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div
+                  className={`${
+                    isOpen ? "block" : "hidden"
+                  } absolute right-0 mt-2 w-52 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none`}
+                >
+                  <div className="py-1">
+                    <span className="block px-4 py-2 text-sm text-gray-700">
+                      {user?.displayName}
+                    </span>
+                  </div>
+                  <div className="py-1">
+                    <button
+                      onClick={handleLogOut}
+                      className="block w-full px-4 py-2 text-sm text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring focus:border-blue-300"
+                    >
+                      <IoLogOut className="inline-block mr-2" />
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div>
+              <Link to="/login">
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline transform transition-transform duration-300 flex items-center">
+                  <IoLogIn className="inline-block mr-2" />
+                  Login
+                </button>
+              </Link>
+            </div>
+          )}
+        </div>
       </nav>
     </div>
   );
