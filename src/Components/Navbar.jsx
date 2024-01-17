@@ -1,6 +1,23 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { IoLogIn, IoLogOut } from "react-icons/io5";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const handleLogOut=()=>{
+    logout()
+    .then(()=>{
+      Swal.fire({
+              icon: "success",
+              title: "Successfully added",
+              text: "User Logout Successfully",
+            });
+    })
+    .catch(error=>{console.log(error)})
+  }
+
   const navOptions = (
     <>
       <li>
@@ -56,7 +73,7 @@ const Navbar = () => {
           }
           to="/subscription"
         >
-        Subscription
+          Subscription
         </NavLink>
       </li>
 
@@ -75,21 +92,6 @@ const Navbar = () => {
           My Articles
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "  font-semibold text-orange-500 underline   "
-              : ""
-          }
-          to="/login"
-        >
-          Login
-        </NavLink>
-      </li>
-      
     </>
   );
   return (
@@ -124,6 +126,25 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal  mr-80 px-1">{navOptions}</ul>
         </div>
+        {user ? (
+          <>
+          <span>{user?.displayName}</span>
+          <span><img src={user?.photoURL} alt="" /></span>
+            <button onClick={handleLogOut} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline transform transition-transform duration-300 flex items-center">
+              <IoLogOut className="inline-block mr-2" />
+              Logout
+            </button>
+          </>
+        ) : (
+          <div>
+            <Link to="/login">
+              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline transform transition-transform duration-300 flex items-center">
+                <IoLogIn className="inline-block mr-2" />
+                Login
+              </button>
+            </Link>
+          </div>
+        )}
       </nav>
     </div>
   );

@@ -5,18 +5,26 @@ import { FcGoogle } from "react-icons/fc";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
 import Navbar from "../Components/Navbar";
+import Lottie from "react-lottie";
+import login from "./login.json";
 import { useContext } from "react";
-import AuthProvider, { AuthContext } from "../Providers/AuthProvider";
- 
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Login = () => {
- 
-
-    // const {loginUser}=useContext(AuthProvider)
+  const { loginUser,GoogleSignIn } = useContext(AuthContext);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: login, // Lottie animation file
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   const location = useLocation();
   console.log("location in login page", location);
   const navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -45,19 +53,25 @@ const Login = () => {
   };
 
   /// google
-  const handleGoogleLogin = () => {
-    GoogleSignIn()
-      .then((result) => {
-        console.log(result.user);
+  // const handleGoogleLogin = () => {
+  //   GoogleSignIn()
+  //     .then((result) => {
+  //       console.log(result.user);
+  //       Swal.fire({
+  //         icon: "success",
+  //         title: "Successfully added",
+  //         text: "User Login Successfully by google account",
+  //       });
 
-        //
-        // navigate after login
-        navigate(location?.state ? location.state : "/");
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
-  };
+
+         
+  //       // navigate after login
+  //       navigate(location?.state ? location.state : "/");
+  //     })
+  //     .catch((error) => {
+  //       console.error(error.message);
+  //     });
+  // };
 
   return (
     <>
@@ -70,6 +84,9 @@ const Login = () => {
               src="https://i.imgur.com/AchMFsT.jpg"
               alt=""
             />
+            <div className="w-10/12 mx-auto mb-5">
+              <Lottie options={defaultOptions} />
+            </div>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleLogin} className="card-body">
@@ -102,7 +119,9 @@ const Login = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition-transform transform hover:scale-105">
+                  Login
+                </button>
               </div>
               <div className="flex items-center pt-4 space-x-1">
                 <div className="flex-1  h-px sm:w-16 bg-gray-700"></div>
@@ -113,8 +132,7 @@ const Login = () => {
               </div>
               {/* social */}
               <div className="flex justify-center space-x-4">
-                <button
-                  onClick={handleGoogleLogin}
+                <button  
                   aria-label="Log in with Google"
                   className="p-1 rounded-sm"
                 >

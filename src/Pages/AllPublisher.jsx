@@ -7,7 +7,7 @@ const AllPublisher = () => {
   return (
     <>
       <SectionTitle heading="All Publisher"></SectionTitle>
-      {datas.map((data) => (
+      {/* {datas?.map((data) => (
         <>
           <div className="avatar flex-col ml-5 gap-5 justify-center text-center">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -16,7 +16,7 @@ const AllPublisher = () => {
             <p>{data.publisher}</p>
           </div>
         </>
-      ))}
+      ))} */}
     </>
   );
 };

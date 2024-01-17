@@ -7,9 +7,20 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import Navbar from "../Components/Navbar";
+import Lottie from "react-lottie";
+import signUp from "./signup.json";
 
 const Registration = () => {
-//   const { createUser, handleUpdateProfile } = useContext(AuthContext);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: signUp, // Lottie animation file
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const { createUser, handleUpdateProfile ,logout} = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -19,7 +30,8 @@ const Registration = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(photo, name, email, password);
+    const user = { photo, name, email, password };
+    console.log(user);
 
     // validation
     if (password.length < 6) {
@@ -34,18 +46,31 @@ const Registration = () => {
     }
 
     // make user
-
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
-        handleUpdateProfile(name, photo).then(() => {
-          Swal.fire({
-            icon: "success",
-            title: "Successful",
-            text: "  Successfully Create User ",
-          });
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        Swal.fire({
+          icon: "success",
+          title: "Successful",
+          text: "Successfully Sign Up to Fast News ",
         });
-        navigate("/");
+        handleUpdateProfile(name, photo)
+          .then(() => {
+            console.log("user profile info updated");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        // navigate("/");
+        logout()
+        .then(()=>{
+          navigate("/login");
+        })
+        .catch(error=>{
+          console.log(error)
+        })
       })
 
       .catch((error) => {
@@ -62,16 +87,14 @@ const Registration = () => {
     <>
       <Navbar></Navbar>
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col md:gap-24   lg:flex-row">
-          <div className="text-center lg:text-left">
-            <img
-              className="w-[800px]"
-              src="https://i.imgur.com/4uhnaBR.jpg"
-              alt=""
-            />
+        <div className="hero-content flex-col   md:gap-24   lg:flex-row">
+          <div className="text-center   lg:text-left">
+            <div className="w-8/12 mx-auto mb-5">
+              <Lottie options={defaultOptions} />
+            </div>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleRegister} className="card-body">
+          <div className="card flex-shrink-0 w-full lg:mr-24 max-w-sm shadow-2xl bg-base-100">
+            <form onSubmit={handleRegister} className="card-body ">
               <h1 className="md:text-5xl text-3xl font-bold mb-5">
                 Register now!
               </h1>
@@ -125,7 +148,9 @@ const Registration = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn btn-success">Registration</button>
+                <button className="bg-green-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition-transform transform hover:scale-105">
+                  Registration
+                </button>
               </div>
 
               <p className="text-xs text-center sm:px-6 dark:text-gray-400">

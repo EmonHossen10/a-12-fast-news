@@ -1,0 +1,50 @@
+[
+  {
+    "id": 6,
+    "title": "Culinary Innovation: Future of Sustainable Food",
+    "image": "https://i.ibb.co/LJ5nsVz/pexels-photo-3831136.jpg",
+    "publisher": "Sophia Lee",
+    "long_description": "Chefs and food scientists are pioneering sustainable culinary innovation...",
+    "email": "sophia.lee@example.com"
+  },
+  {
+    "id": 4,
+    "title": "Major Breakthrough in Medical Research",
+    "image": "https://i.ibb.co/YQ0NqsF/pexels-photo-2280571.jpg",
+    "publisher": "Emily Johnson",
+    "long_description": "Scientists have achieved a major breakthrough in medical research, unveiling...",
+    "email": "emily.johnson@example.com"
+  },
+  {
+    "id": 1,
+    "title": "COVID-19 Vaccination Milestone Reached",
+    "image": "https://i.ibb.co/94ytb0n/82007828.jpg",
+    "publisher": "John Doe",
+    "long_description": "In a significant milestone, the global COVID-19 vaccination campaign has...",
+    "email": "john.doe@example.com"
+  },
+  {
+    "id": 3,
+    "title": "Space Exploration: New Discoveries Beyond Our Solar System",
+    "image": "https://i.ibb.co/2jQRbXG/satellite-soyuz-spaceship-space-station-41006.jpg",
+    "publisher": "Alex Johnson",
+    "long_description": "Astronomers using advanced telescopes have made astonishing discoveries...",
+    "email": "alex.johnson@example.com"
+  },
+  {
+    "id": 2,
+    "title": "Advancements in Renewable Energy Technology",
+    "image": "https://i.ibb.co/L9PtpNp/Wind-Tweets-May.jpg",
+    "publisher": "Jane Smith",
+    "long_description": "Researchers and engineers have unveiled groundbreaking advancements in...",
+    "email": "jane.smith@example.com"
+  },
+  {
+    "id": 5,
+    "title": "Tech Giants Announce Collaboration on AI Ethics",
+    "image": "https://i.ibb.co/hYRcSkf/free-photo-of-woman-working-on-a-laptop-with-copy-space-3769101.jpg",
+    "publisher": "David Smith",
+    "long_description": "In a landmark move, major tech companies have announced a collaborative effort...",
+    "email": "david.smith@example.com"
+  }
+]

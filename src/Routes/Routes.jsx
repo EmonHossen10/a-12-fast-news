@@ -6,6 +6,7 @@ import AllArticle from "../Components/AllArticle";
 import AddArticle from "../Components/AddArticle";
 import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://fast-news-server.vercel.app/articles"),
+         
       },
       {
         path:"/allArticle",
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/addArticle",
-        element:<AddArticle></AddArticle>
+        element:<PrivateRoute><AddArticle></AddArticle></PrivateRoute>
       },
      {
       path:"/login",
