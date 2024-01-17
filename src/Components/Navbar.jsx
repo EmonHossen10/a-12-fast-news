@@ -199,11 +199,17 @@ const Navbar = () => {
               </div>
             </>
           ) : (
-            <div>
+            <div className="flex gap-3">
               <Link to="/login">
                 <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline transform transition-transform duration-300 flex items-center">
                   <IoLogIn className="inline-block mr-2" />
                   Login
+                </button>
+              </Link>
+              <Link to="/registration">
+                <button className="bg-orange-500 hover:bg-orange-600   text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform transition-transform duration-300 flex items-center">
+                  <IoLogIn className="inline-block mr-2" />
+                  Register
                 </button>
               </Link>
             </div>
