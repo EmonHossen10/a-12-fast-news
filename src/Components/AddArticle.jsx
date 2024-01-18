@@ -1,22 +1,114 @@
-import { useState } from "react";
+/* eslint-disable no-unused-vars */
+import { useContext, useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
+import Select from "react-select";
+import axios from "axios";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddArticle = () => {
+  const { user } = useContext(AuthContext);
+  const email = user?.email;
+  console.log(email);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedTags, setSelectedTags] = useState([]);
+  // select form
+  const options = [
+    { value: "LifeStyle", label: "LifeStyle" },
+    { value: "Technology", label: "Technology" },
+    { value: "Foreign", label: "Foreign" },
+    { value: "Business", label: "Business" },
+    { value: "Sports", label: "Sports" },
+    { value: "BreakingNews", label: "BreakingNews" },
+  ];
 
+  // tags
+  useEffect(() => {
+    // Log the selected tags when the state updates
+    console.log("Selected Tags:", selectedTags);
+  }, [selectedTags]);
+
+  const handleChange = (selectedOptions) => {
+    // Ensure that selectedOptions is an array
+    setSelectedTags(selectedOptions || []);
+  };
+  // image select
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setSelectedImage(file);
   };
+
+  const formRef = useRef(null);
+  // adding db 2
+  const handleAddToDB = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const publisher = form.elements.publisher.value;
+    const description = form.description.value;
+    if (!selectedImage) {
+      console.error("No image selected.");
+      return;
+    }
+    try {
+      // Upload the image to ImgBB
+      const formData = new FormData();
+      formData.append("image", selectedImage);
+
+      const imgbbResponse = await axios.post(image_hosting_api, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      // Get the hosted image URL from the ImgBB API response
+      const hostedImageUrl = imgbbResponse.data.data.url;
+
+      // Make a request to your backend API to save the article data to MongoDB
+      console.log(selectedTags);
+      await axios
+        .post("http://localhost:5000/articles", {
+          name,
+          publisher,
+          description,
+          image: hostedImageUrl,
+          tags: selectedTags.map((tag) => tag.value),
+          email,
+        })
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.insertedId) {
+            Swal.fire({
+              icon: "success",
+              title: "Success!",
+              text: "Article has been Added  successfully .",
+            });
+          }
+        });
+
+      if (formRef.current) {
+        formRef.current.reset();
+      } else {
+        console.error("formRef is null");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div>
       <Navbar></Navbar>
       <div className="hero min-h-screen bg-base-200   ">
         <div className="shadow-2xl bg-base-300 w-8/12 rounded-xl mx-auto">
-          <form className="card-body">
+          <form ref={formRef} onSubmit={handleAddToDB} className="card-body">
             <h2 className="text-black font-bold text-3xl text-center pb-4">
               Add Article
             </h2>
+            {/* name */}
 
             <div className="form-control">
               <label className="label">
@@ -24,24 +116,13 @@ const AddArticle = () => {
               </label>
               <input
                 type="text"
-                name="serviceName"
+                name="name"
                 placeholder="Title "
                 className="input input-bordered input-info  "
-                required
               />
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Article Image </span>
-              </label>
-              <input
-                type="text"
-                name="servicePhoto"
-                placeholder="Article Image"
-                className="input input-bordered input-info  "
-                required
-              />
-            </div>
+
+            {/* publisher */}
 
             <section className="grid grid-cols-2">
               <div className="form-control w-[300px]">
@@ -51,37 +132,33 @@ const AddArticle = () => {
                 <select
                   name="publisher"
                   className="select select-bordered select-info"
-                  required
+                  defaultValue="default"
                 >
-                  <option value="" disabled selected>
+                  <option value="default" disabled>
                     Select Publisher
                   </option>
-                  <option value="option1">Dhaka Daily</option>
-                  <option value="option2">Bengal Beacon</option>
-                  <option value="option3">BBC</option>
-                  <option value="option3">CNN</option>
-                  <option value="option3">Barishal Buzz</option>
-                  <option value="option3">Business Daily</option>
+                  <option value="Dhaka Daily">Dhaka Daily</option>
+                  <option value="Bengal Beacon">Bengal Beacon</option>
+                  <option value="BBC">BBC</option>
+                  <option value="CNN">CNN</option>
+                  <option value="Barishal Buzz">Barishal Buzz</option>
+                  <option value="Business Daily">Business Daily</option>
                 </select>
               </div>
-              <div className="form-control w-[300px]">
+              {/* tags */}
+              <div className="form-control">
                 <label className="label">
                   <span className="label-text">Tags</span>
                 </label>
-                <select
-                  name="publisher"
-                  className="select select-bordered select-info"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Select Tags
-                  </option>
-                  <option value="option1">LifeStyle</option>
-                  <option value="option2">Technology</option>
-                  <option value="option3">Foreign</option>
-                  <option value="option3">Business</option>
-                  <option value="option3">Sports</option>
-                </select>
+                <Select
+                  isMulti
+                  name="tags"
+                  options={options}
+                  className="select-container"
+                  classNamePrefix="select"
+                  onChange={handleChange}
+                />
+                {/* Use selectedTags array as needed */}
               </div>
             </section>
             {/* image */}
@@ -119,6 +196,7 @@ const AddArticle = () => {
               <textarea
                 className="textarea textarea-bordered"
                 placeholder="Description"
+                name="description"
               ></textarea>
             </div>
 
@@ -127,9 +205,9 @@ const AddArticle = () => {
               <button className="btn btn-info">Submit </button>
             </div>
             <p className="font-bold text-sm mt-3">
-             *** Note : This wont show on all articles page until admin approves
-          </p>
-          
+              *** Note : This wont show on all articles page until admin
+              approves
+            </p>
           </form>
         </div>
       </div>

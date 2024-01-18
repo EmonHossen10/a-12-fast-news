@@ -3,6 +3,7 @@ import Header from "../Components/Header";
 import Navbar from "../Components/Navbar";
 import AllPublisher from "./AllPublisher";
 import BreakingNews from "./BreakingNews";
+import TestPurpose from "./TestPurpose"
 
 import Featured from "./Featured";
 import Plans from "./Plans";
@@ -16,6 +17,7 @@ const Home = () => {
       <AllPublisher></AllPublisher>
       <Plans></Plans>
       <Featured></Featured>
+       <TestPurpose></TestPurpose>
       <Footer></Footer>
     </div>
   );
