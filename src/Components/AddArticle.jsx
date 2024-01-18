@@ -42,6 +42,7 @@ const AddArticle = () => {
   };
 
   const formRef = useRef(null);
+
   // adding db 2
   const handleAddToDB = async (e) => {
     e.preventDefault();
@@ -70,7 +71,7 @@ const AddArticle = () => {
       // Make a request to your backend API to save the article data to MongoDB
       console.log(selectedTags);
       await axios
-        .post("http://localhost:5000/articles", {
+        .post("http://localhost:5000/addArticles", {
           name,
           publisher,
           description,
@@ -89,6 +90,7 @@ const AddArticle = () => {
           }
         });
 
+      // clear
       if (formRef.current) {
         formRef.current.reset();
       } else {
@@ -119,6 +121,7 @@ const AddArticle = () => {
                 name="name"
                 placeholder="Title "
                 className="input input-bordered input-info  "
+                required
               />
             </div>
 
@@ -133,8 +136,9 @@ const AddArticle = () => {
                   name="publisher"
                   className="select select-bordered select-info"
                   defaultValue="default"
+                  required
                 >
-                  <option value="default" disabled>
+                  <option value="default" required disabled>
                     Select Publisher
                   </option>
                   <option value="Dhaka Daily">Dhaka Daily</option>
@@ -157,6 +161,7 @@ const AddArticle = () => {
                   className="select-container"
                   classNamePrefix="select"
                   onChange={handleChange}
+                  required
                 />
                 {/* Use selectedTags array as needed */}
               </div>
@@ -174,9 +179,10 @@ const AddArticle = () => {
                 id="imageInput"
                 accept="image/*"
                 onChange={handleImageChange}
+                required
               />
 
-              {selectedImage && (
+              {/* {selectedImage && (
                 <div>
                   <p>Selected Image : {selectedImage.name}</p>
                   <img
@@ -185,7 +191,7 @@ const AddArticle = () => {
                     style={{ maxWidth: "300px", maxHeight: "300px" }}
                   />
                 </div>
-              )}
+              )} */}
             </div>
             {/* ********************** */}
 
@@ -197,6 +203,7 @@ const AddArticle = () => {
                 className="textarea textarea-bordered"
                 placeholder="Description"
                 name="description"
+                required
               ></textarea>
             </div>
 

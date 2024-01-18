@@ -8,6 +8,8 @@ import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
 import PrivateRoute from "./PrivateRoute";
 import ArticleDetails from "../Components/ArticleDetails";
+import MyArticle from "../Components/MyArticle";
+import MyArticleDetails from "../Components/MyArticleDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,12 +30,21 @@ const router = createBrowserRouter([
       },
       {
         path:'/articleDetails/:id',
-        element:<ArticleDetails></ArticleDetails>,
+        element:<PrivateRoute><ArticleDetails></ArticleDetails></PrivateRoute>,
         loader:({params})=>fetch(`http://localhost:5000/articles/${params.id}`)
       },
       {
         path:"/addArticle",
         element:<PrivateRoute><AddArticle></AddArticle></PrivateRoute>
+      },
+      {
+        path:"/myArticle",
+        element:<MyArticle></MyArticle>
+      },
+      {
+        path:"/details/:id",
+        element:<MyArticleDetails></MyArticleDetails>,
+        loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
       },
      {
       path:"/login",
