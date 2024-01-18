@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import ArticleDetails from "../Components/ArticleDetails";
 import MyArticle from "../Components/MyArticle";
 import MyArticleDetails from "../Components/MyArticleDetails";
+import UpdateArticle from "../Components/UpdateArticle";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/allArticle",
-        element:<AllArticle></AllArticle>,
+        element:<PrivateRoute><AllArticle></AllArticle></PrivateRoute>,
         loader:()=>fetch("http://localhost:5000/articles")
          
       },
@@ -39,12 +40,17 @@ const router = createBrowserRouter([
       },
       {
         path:"/myArticle",
-        element:<MyArticle></MyArticle>
+        element:<PrivateRoute><MyArticle></MyArticle></PrivateRoute>
       },
       {
         path:"/details/:id",
         element:<MyArticleDetails></MyArticleDetails>,
         loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+      },
+      {
+        path:"/updateArticle/:id",
+        element:<UpdateArticle></UpdateArticle>,
+        loader:({params})=>fetch(`http://localhost:5000/allArticles/${params.id}`)
       },
      {
       path:"/login",

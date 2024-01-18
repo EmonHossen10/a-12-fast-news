@@ -53,25 +53,22 @@ const Login = () => {
   };
 
   /// google
-  // const handleGoogleLogin = () => {
-  //   GoogleSignIn()
-  //     .then((result) => {
-  //       console.log(result.user);
-  //       Swal.fire({
-  //         icon: "success",
-  //         title: "Successfully added",
-  //         text: "User Login Successfully by google account",
-  //       });
-
-
-         
-  //       // navigate after login
-  //       navigate(location?.state ? location.state : "/");
-  //     })
-  //     .catch((error) => {
-  //       console.error(error.message);
-  //     });
-  // };
+  const handleGoogleLogin = () => {
+    GoogleSignIn()
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          icon: "success",
+          title: "Successfully added",
+          text: "User Login Successfully by google account",
+        });
+        // navigate after login
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
 
   return (
     <>
@@ -132,7 +129,7 @@ const Login = () => {
               </div>
               {/* social */}
               <div className="flex justify-center space-x-4">
-                <button  
+                <button onClick={handleGoogleLogin}
                   aria-label="Log in with Google"
                   className="p-1 rounded-sm"
                 >

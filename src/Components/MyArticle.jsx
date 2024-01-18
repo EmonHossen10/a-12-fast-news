@@ -6,11 +6,22 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { MdBrowserUpdated, MdDeleteForever } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import SectionTitle from "../Hooks/SectionTitle";
+import Lottie from "react-lottie";
+import img from "./noArticle.json";
 
 const MyArticle = () => {
   const { user } = useContext(AuthContext);
 
   const [article, setArticle] = useState([]);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: img, // Lottie animation file
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   const url = `http://localhost:5000/allArticles?email=${user?.email}`;
   useEffect(() => {
@@ -57,50 +68,62 @@ const MyArticle = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <h2>MY ARTICLE</h2>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr className="bg-green-400  text-black font-serif text-xl ">
-              <th>SI No</th>
-              <th>Details</th>
-              <th>Name</th>
-              <th>Status</th>
-              <th>isPremium</th>
-              <th> Update</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {article?.map((item, idx) => (
-              <tr key={item._id}>
-                <th>{idx + 1}</th>
-                <td>
-                  <Link to={`/details/${item._id}`}>
-                    <button className="btn btn-outline btn-warning">
-                      Details
-                    </button>
-                  </Link>
-                </td>
-                <td>{item.name}</td>
-                <td> ststus </td>
-                <td> premium</td>
-                <td>
-                  <button>
-                    <MdBrowserUpdated className="text-3xl text-sky-500"></MdBrowserUpdated>
-                  </button>
-                </td>
-                <th>
-                  <button onClick={() => handleDelete(item._id)}>
-                    <MdDeleteForever className="text-4xl text-red-600"></MdDeleteForever>
-                  </button>
-                </th>
+      <SectionTitle heading="My Article"></SectionTitle>
+
+      {article.length > 0 ? (
+        <div className="overflow-x-auto my-10">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr className="bg-green-400  text-black font-serif text-xl ">
+                <th>SI No</th>
+                <th>Details</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>isPremium</th>
+                <th> Update</th>
+                <th>Delete</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {article?.map((item, idx) => (
+                <tr key={item._id}>
+                  <th>{idx + 1}</th>
+                  <td>
+                    <Link to={`/details/${item._id}`}>
+                      <button className="btn btn-outline btn-warning">
+                        Details
+                      </button>
+                    </Link>
+                  </td>
+                  <td>{item.name}</td>
+                  <td> ststus </td>
+                  <td> premium</td>
+                  <td>
+                    <Link to={`/updateArticle/${item._id}`}>
+                    <button>
+                      <MdBrowserUpdated className="text-3xl text-sky-500"></MdBrowserUpdated>
+                    </button>
+                    </Link>
+                  </td>
+                  <th>
+                    <button onClick={() => handleDelete(item._id)}>
+                      <MdDeleteForever className="text-4xl text-red-600"></MdDeleteForever>
+                    </button>
+                  </th>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div>
+          <p className="text-center text-3xl mt-10 font-bold font-serif">No Article Added</p>
+          <div className="w-4/12 mx-auto mb-5">
+            <Lottie options={defaultOptions} />
+          </div>
+        </div>
+      )}
 
       <Footer></Footer>
     </div>

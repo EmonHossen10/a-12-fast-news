@@ -2,11 +2,11 @@ import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
 const BreakingNews = () => {
   return (
-    <div className="flex items-center w-11/12 mx-auto bg-gray-300 h-16 mt-4 rounded-xl">
-      <button className="btn btn-warning text-white ml-5 mr-6">
+    <div className="flex items-center     h-16 mt-4 rounded-xl">
+      <button className="btn btn-error border text-white ml-5 mr-6">
         Breaking News
       </button>
-      <Marquee pauseOnHover={true} speed={100}>
+      <Marquee className="font-bold" pauseOnHover={true} speed={100}>
         <Link to="/" className="mr-10">
           In a groundbreaking announcement today, scientists have unveiled a
           potential game-changer in healthcare. A newly identified biomarker
