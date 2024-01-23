@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const UpdateArticle = () => {
   const data = useLoaderData();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   // console.log(Object.keys(data).join(','))
   const { _id, name, publisher, description, image, tags, email } = data;
 
@@ -19,20 +19,17 @@ const UpdateArticle = () => {
     const newUpdateArticle = { name, image, publisher, description };
 
     console.log(newUpdateArticle);
-    fetch(
-      `http://localhost:5000/allArticles/${_id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUpdateArticle),
-      }
-    )
+    fetch(`http://localhost:5000/allArticles/${_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUpdateArticle),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        navigate('/myArticle' || "/");
+        navigate("/myArticle" || "/");
         if (data.modifiedCount > 0) {
           Swal.fire({
             icon: "success",
@@ -45,7 +42,7 @@ const UpdateArticle = () => {
   return (
     <div>
       <Navbar></Navbar>
-     
+
       <div className=" rounded-xl my-5 w-11/12 mx-auto bg-base-200">
         <h1 className="text-3xl text- pt-4 ps-9 font-bold">
           Update Service : {name}{" "}

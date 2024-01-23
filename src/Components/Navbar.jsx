@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 import Swal from "sweetalert2";
+import { MdDriveFileRenameOutline, MdEmail } from "react-icons/md";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,6 +43,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+
       <li>
         <NavLink
           className={({ isActive, isPending }) =>
@@ -84,8 +86,6 @@ const Navbar = () => {
           Subscription
         </NavLink>
       </li>
-
-      {/* TODO: dashboard added here */}
       <li>
         <NavLink
           className={({ isActive, isPending }) =>
@@ -98,6 +98,22 @@ const Navbar = () => {
           to="/myArticle"
         >
           My Articles
+        </NavLink>
+      </li>
+
+      {/* TODO: dashboard added here */}
+      <li>
+        <NavLink
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "   font-bold   text-sky-500 underline   "
+              : ""
+          }
+          to="/dashboard/home"
+        >
+          Dashboard
         </NavLink>
       </li>
     </>
@@ -132,37 +148,15 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal  mr-80 px-1">{navOptions}</ul>
+          <ul className="menu menu-horizontal  mr-80 px-1">
+           { navOptions }  
+          </ul>
         </div>
+
+        {/* login logout */}
         <div>
           {user ? (
             <>
-              {/* <div className="dropdown dropdown-bottom text-black avatar pr-32">
-                <div
-                  tabIndex={0}
-                  role="button"
-                  className=" w-16 rounded-full m-1"
-                >
-                  <img src={user?.photoURL} alt="" />
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <span>{user?.displayName}</span>
-                  </li>
-                  <li>
-                    <button
-                      onClick={handleLogOut}
-                      className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline transform transition-transform duration-300 flex items-center"
-                    >
-                      <IoLogOut className="inline-block mr-2" />
-                      Logout
-                    </button>
-                  </li>
-                </ul>
-              </div> */}
               <div className={`relative inline-block ${isOpen ? "group" : ""}`}>
                 <div
                   tabIndex={0}
@@ -183,7 +177,11 @@ const Navbar = () => {
                 >
                   <div className="py-1">
                     <span className="block px-4 py-2 text-sm text-gray-700">
+                      <MdDriveFileRenameOutline className="inline" />{" "}
                       {user?.displayName}
+                    </span>
+                    <span className="block px-4 py-2 text-sm text-gray-700">
+                      <MdEmail className="inline" /> {user?.email}
                     </span>
                   </div>
                   <div className="py-1">

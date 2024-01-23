@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,6 +9,8 @@ import Swal from "sweetalert2";
 import Navbar from "../Components/Navbar";
 import Lottie from "react-lottie";
 import signUp from "./signup.json";
+import axios from "axios";
+import SocialLogin from "../Components/SocialLogin";
 
 const Registration = () => {
   const defaultOptions = {
@@ -20,8 +22,9 @@ const Registration = () => {
     },
   };
 
-  const { createUser, handleUpdateProfile ,logout} = useContext(AuthContext);
+  const { createUser, handleUpdateProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -55,22 +58,30 @@ const Registration = () => {
           title: "Successful",
           text: "Successfully Sign Up to Fast News ",
         });
+        navigate(location?.state ? location.state : "/");
+
         handleUpdateProfile(name, photo)
           .then(() => {
             console.log("user profile info updated");
+
+            // make user entry in the database
+            //user info
+            const userInfo = {
+              name: loggedUser?.displayName,
+              email: email,
+              image: loggedUser?.photoURL,
+            };
+            axios
+              .post("http://localhost:5000/addUsers", userInfo)
+              .then((res) => {
+                if (res.data.insertedId) {
+                  console.log("user added to db");
+                }
+              });
           })
           .catch((error) => {
             console.log(error);
           });
-
-        // navigate("/");
-        logout()
-        .then(()=>{
-          navigate("/login");
-        })
-        .catch(error=>{
-          console.log(error)
-        })
       })
 
       .catch((error) => {
@@ -152,6 +163,16 @@ const Registration = () => {
                   Registration
                 </button>
               </div>
+              <div className="flex items-center pt-4 space-x-1">
+                <div className="flex-1  h-px sm:w-16 bg-gray-700"></div>
+                <p className="px-3 text-sm text-center text-gray-500">
+                  Login with social accounts
+                </p>
+                <div className="flex-1  h-px sm:w-16 bg-gray-700"></div>
+              </div>
+              {/* social */}
+
+              <SocialLogin></SocialLogin>
 
               <p className="text-xs text-center sm:px-6 dark:text-gray-400">
                 Already have an account ?

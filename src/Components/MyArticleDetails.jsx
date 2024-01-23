@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import SectionTitle from "../Hooks/SectionTitle";
 
 const MyArticleDetails = () => {
   const data = useLoaderData();
@@ -10,6 +11,7 @@ const MyArticleDetails = () => {
   return (
     <div>
       <Navbar></Navbar>
+      <SectionTitle heading="Article Details"></SectionTitle>
 
       <div className="card w-10/12 mx-auto bg-base-100 shadow-xl">
         <figure>

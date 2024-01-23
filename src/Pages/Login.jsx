@@ -9,9 +9,10 @@ import Lottie from "react-lottie";
 import login from "./login.json";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import SocialLogin from "../Components/SocialLogin";
 
 const Login = () => {
-  const { loginUser,GoogleSignIn } = useContext(AuthContext);
+  const { loginUser, GoogleSignIn } = useContext(AuthContext);
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -49,24 +50,6 @@ const Login = () => {
       .catch((error) => {
         console.log(error.message);
         toast.error(error.message);
-      });
-  };
-
-  /// google
-  const handleGoogleLogin = () => {
-    GoogleSignIn()
-      .then((result) => {
-        console.log(result.user);
-        Swal.fire({
-          icon: "success",
-          title: "Successfully added",
-          text: "User Login Successfully by google account",
-        });
-        // navigate after login
-        navigate(location?.state ? location.state : "/");
-      })
-      .catch((error) => {
-        console.error(error.message);
       });
   };
 
@@ -128,14 +111,15 @@ const Login = () => {
                 <div className="flex-1  h-px sm:w-16 bg-gray-700"></div>
               </div>
               {/* social */}
-              <div className="flex justify-center space-x-4">
+              {/* <div className="flex justify-center space-x-4">
                 <button onClick={handleGoogleLogin}
                   aria-label="Log in with Google"
                   className="p-1 rounded-sm"
                 >
                   <FcGoogle className="text-3xl"></FcGoogle>
                 </button>
-              </div>
+              </div> */}
+              <SocialLogin></SocialLogin>
               <p className="text-xs text-center sm:px-6 dark:text-gray-400">
                 Do not have an account ?
                 <Link to="/registration">
