@@ -63,19 +63,31 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <PrivateRoute><MyArticleDetails></MyArticleDetails></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyArticleDetails></MyArticleDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/details/${params.id}`),
       },
       {
         path: "/updateArticle/:id",
-        element: <PrivateRoute><UpdateArticle></UpdateArticle></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <UpdateArticle></UpdateArticle>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allArticles/${params.id}`),
       },
       {
         path: "/subscription",
-        element: <PrivateRoute><Subcription></Subcription></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Subcription></Subcription>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -104,9 +116,9 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path:"/dashboard/allUser",
-        element:<AllUsers></AllUsers>
-      }
+        path: "/dashboard/allUser",
+        element: <AllUsers></AllUsers>,
+      },
     ],
   },
 ]);

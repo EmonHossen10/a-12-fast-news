@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import { Link } from "react-router-dom";
 
 const AllUsers = () => {
   const axiosSecure = UseAxiosSecure();
@@ -11,6 +12,7 @@ const AllUsers = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
+      // console.log(res.data[1].email)
       return res.data;
     },
   });
@@ -53,16 +55,17 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {users?.map((user, idx) => (
+           
               <tr
                 key={user._id}
                 className={idx % 2 === 0 ? "bg-gray-200" : "bg-gray-300"}
               >
-                <td className="p-2 font-semibold border border-r">{idx + 1}</td>
+                <td className="p-2 font-semibold border border-r">{idx + 1}    </td>
                 <td className="p-2 font-semibold border border-r">
                   {user.name}
                 </td>
                 <td className="p-2 font-semibold border border-r">
-                  {user.email}
+                 {user.email}   
                 </td>
                 <td className="p-2 font-semibold border border-r">
                   <div className="avatar">

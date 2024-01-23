@@ -3,10 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 import Swal from "sweetalert2";
-import { MdDriveFileRenameOutline, MdEmail } from "react-icons/md";
+import { MdDriveFileRenameOutline } from "react-icons/md";
+import UseAdmin from "../Hooks/UseAdmin";
+import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAdmin] = UseAdmin();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -102,20 +105,24 @@ const Navbar = () => {
       </li>
 
       {/* TODO: dashboard added here */}
-      <li>
-        <NavLink
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "   font-bold   text-sky-500 underline   "
-              : ""
-          }
-          to="/dashboard/home"
-        >
-          Dashboard
-        </NavLink>
-      </li>
+      {isAdmin ? (
+        <li>
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "   font-bold   text-sky-500 underline   "
+                : ""
+            }
+            to="/dashboard/home"
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      ) : (
+        <></>
+      )}
     </>
   );
   return (
@@ -148,9 +155,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal  mr-80 px-1">
-           { navOptions }  
-          </ul>
+          <ul className="menu menu-horizontal  mr-80 px-1">{navOptions}</ul>
         </div>
 
         {/* login logout */}
@@ -180,9 +185,15 @@ const Navbar = () => {
                       <MdDriveFileRenameOutline className="inline" />{" "}
                       {user?.displayName}
                     </span>
-                    <span className="block px-4 py-2 text-sm text-gray-700">
+                    {/* <span className="block px-4 py-2 text-sm text-gray-700">
                       <MdEmail className="inline" /> {user?.email}
-                    </span>
+                    </span> */}
+
+                    <Link to="/dashboard/home">
+                      <button className="     block px-4 py-2  hover:text-sky-400 hover:font-bold text-sm text-gray-700">
+                        <CgProfile className="inline" /> My Profile
+                      </button>
+                    </Link>
                   </div>
                   <div className="py-1">
                     <button

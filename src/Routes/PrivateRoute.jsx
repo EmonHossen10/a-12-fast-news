@@ -11,7 +11,7 @@ import Lottie from "react-lottie";
 const PrivateRoute = ({children}) => {
     const {user,loading}=useContext(AuthContext);
     const location = useLocation();
-  // console.log(location.pathname);
+ 
 
 
     const defaultOptions = {

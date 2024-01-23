@@ -14,6 +14,7 @@ const DashHome = () => {
           </div>
         </div>
         <h2 className="text-3xl font-serif font-bold"  >{user?.displayName}</h2>
+        <h3 className="  font-serif font-semibold">Email: {user?.email} </h3>
       </div>
     </div>
   );

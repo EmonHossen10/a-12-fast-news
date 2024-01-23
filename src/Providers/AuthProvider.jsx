@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser) {
         // get token ans store in ls
-        const userInfo = currentUser.email;
+        const userInfo = { email:currentUser.email};
 
         axios.post("http://localhost:5000/jwt", userInfo).then((res) => {
           if (res.data.token) {
@@ -82,7 +82,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     loginUser,
     handleUpdateProfile,
-    logout,
+  logout,
     loading,
     GoogleSignIn,
     setLoading,
