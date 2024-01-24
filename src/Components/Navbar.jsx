@@ -189,7 +189,7 @@ const Navbar = () => {
                       <MdEmail className="inline" /> {user?.email}
                     </span> */}
 
-                    <Link to="/dashboard/home">
+                    <Link to="/myProfile">
                       <button className="     block px-4 py-2  hover:text-sky-400 hover:font-bold text-sm text-gray-700">
                         <CgProfile className="inline" /> My Profile
                       </button>

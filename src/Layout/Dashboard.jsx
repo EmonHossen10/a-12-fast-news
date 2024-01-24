@@ -50,17 +50,7 @@ const Dashboard = () => {
             </>
           ) : (
             <>
-              <li>
-                <NavLink to="/dashboard/home">
-                  <MdAdminPanelSettings className="text-xl" />
-                  User  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/">
-                  <FaHome></FaHome> Home
-                </NavLink>
-              </li>
+              
             </>
           )}
         </ul>

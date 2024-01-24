@@ -15,6 +15,7 @@ import Subcription from "../Pages/Subcription";
 import Dashboard from "../Layout/Dashboard";
 import DashHome from "../Dashboard/DashHome";
 import AllUsers from "../Dashboard/AllUsers";
+import MyProfile from "../Pages/MyProfile";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,11 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/myProfile",
+        element: <MyProfile></MyProfile>,
+      },
+
       {
         path: "/login",
         element: <Login></Login>,
