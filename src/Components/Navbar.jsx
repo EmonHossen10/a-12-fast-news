@@ -6,16 +6,30 @@ import Swal from "sweetalert2";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import UseAdmin from "../Hooks/UseAdmin";
 import { CgProfile } from "react-icons/cg";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAdmin] = UseAdmin();
+  const { user, logout } = useContext(AuthContext);
+
+  //
+  const { data = [] } = useQuery({
+    queryKey: ["data"],
+    queryFn: async () => {
+      const res = await axios.get("http://localhost:5000/personalUsers");
+      // console.log(res.data?.[0].email, "data");
+      return res.data;
+    },
+  });
+  const result = data?.find((item) => item?.email == user?.email);
+  console.log(result);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const { user, logout } = useContext(AuthContext);
   const handleLogOut = () => {
     logout()
       .then(() => {
@@ -170,7 +184,7 @@ const Navbar = () => {
                   onClick={toggleDropdown}
                 >
                   <img
-                    src={user?.photoURL}
+                    src={result?.image}
                     alt=""
                     className="w-full h-full object-cover"
                   />
@@ -183,7 +197,7 @@ const Navbar = () => {
                   <div className="py-1">
                     <span className="block px-4 py-2 text-sm text-gray-700">
                       <MdDriveFileRenameOutline className="inline" />{" "}
-                      {user?.displayName}
+                      {result?.name}
                     </span>
                     {/* <span className="block px-4 py-2 text-sm text-gray-700">
                       <MdEmail className="inline" /> {user?.email}

@@ -11,8 +11,11 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const AddArticle = () => {
   const { user } = useContext(AuthContext);
+  const authorImage = user?.photoURL;
   const email = user?.email;
-  console.log(email);
+  console.log(user);
+  const dateTime = new Date();
+  let type = "normal";
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
   // select form
@@ -50,6 +53,7 @@ const AddArticle = () => {
     const name = form.name.value;
     const publisher = form.elements.publisher.value;
     const description = form.description.value;
+    const authorName = form.authorName.value;
     if (!selectedImage) {
       console.error("No image selected.");
       return;
@@ -78,6 +82,11 @@ const AddArticle = () => {
           image: hostedImageUrl,
           tags: selectedTags.map((tag) => tag.value),
           email,
+          authorName,
+          authorImage,
+          status: "pending",
+          dateTime,
+          type,
         })
         .then((res) => {
           console.log(res.data);
@@ -110,6 +119,21 @@ const AddArticle = () => {
             <h2 className="text-black font-bold text-3xl text-center pb-4">
               Add Article
             </h2>
+            {/* Author name */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Author Name </span>
+              </label>
+              <input
+                type="text"
+                name="authorName"
+                placeholder="Author Name "
+                className="input input-bordered input-info  "
+                required
+              />
+            </div>
+            {/* author image */}
+
             {/* name */}
 
             <div className="form-control">

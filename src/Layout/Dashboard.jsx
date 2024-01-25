@@ -14,7 +14,7 @@ const Dashboard = () => {
     <div className="flex gap-3">
       {/* Dashboard sidebar */}
 
-      <div className="w-64 min-h-screen bg-sky-300">
+      <div className="w-64 min-h-screen   bg-sky-300">
         <ul className="menu">
           {isAdmin ? (
             <>
@@ -36,7 +36,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/allPublisher">
+                <NavLink to="/dashboard/addPublisher">
                   <SiAffinitypublisher></SiAffinitypublisher> Add Publisher
                 </NavLink>
               </li>
@@ -55,7 +55,6 @@ const Dashboard = () => {
           )}
         </ul>
       </div>
-
       {/* navigation content */}
       <div className="flex-1">
         <Outlet></Outlet>

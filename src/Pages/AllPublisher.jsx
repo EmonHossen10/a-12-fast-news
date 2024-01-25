@@ -1,22 +1,28 @@
-import { useLoaderData } from "react-router-dom";
+import axios from "axios";
 import SectionTitle from "../Hooks/SectionTitle";
+import { useQuery } from "@tanstack/react-query";
+import ShowPublisher from "./ShowPublisher";
 
 const AllPublisher = () => {
-  const datas = useLoaderData();
+  // Using tanstack query
+  const { data: publishers = [], refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axios.get("http://localhost:5000/publishers");
+      console.log(res.data);
+      return res.data;
+    },
+  });
 
   return (
     <>
       <SectionTitle heading="All Publisher"></SectionTitle>
-      {/* {datas?.map((data) => (
-        <>
-          <div className="avatar flex-col ml-5 gap-5 justify-center text-center">
-            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={data.image} />
-            </div>
-            <p>{data.publisher}</p>
-          </div>
-        </>
-      ))} */}
+
+      <div className="grid grid-cols-3  gap-10 w-11/12 mx-auto ">
+        {publishers.map((item) => (
+          <ShowPublisher key={item._id} item={item}></ShowPublisher>
+        ))}
+      </div>
     </>
   );
 };

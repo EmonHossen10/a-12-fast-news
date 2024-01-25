@@ -16,6 +16,10 @@ import Dashboard from "../Layout/Dashboard";
 import DashHome from "../Dashboard/DashHome";
 import AllUsers from "../Dashboard/AllUsers";
 import MyProfile from "../Pages/MyProfile";
+import AddPublisher from "../Dashboard/AddPublisher";
+import AdminRoute from "./AdminRoute";
+import AllArticleAdmin from "../Dashboard/AllArticleAdmin";
+import UpdateProfile from "../Pages/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -92,7 +96,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/myProfile",
-        element: <MyProfile></MyProfile>,
+        element: (
+          <PrivateRoute>
+            <MyProfile></MyProfile>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myProfile/updateProfile/:id",
+        element: (
+          <PrivateRoute>
+        
+            <UpdateProfile></UpdateProfile>
+          </PrivateRoute>
+        ),
+        loader:({params})=>fetch(`http://localhost:5000/personalUsers/${params.id}`)
       },
 
       {
@@ -108,22 +126,42 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <PrivateRoute>
+      <AdminRoute>
         <Dashboard></Dashboard>
-      </PrivateRoute>
+      </AdminRoute>
     ),
     children: [
       {
         path: "/dashboard/home",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <DashHome></DashHome>
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
         path: "/dashboard/allUser",
-        element: <AllUsers></AllUsers>,
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allArticle",
+        element: (
+          <AdminRoute>
+            <AllArticleAdmin></AllArticleAdmin>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/addPublisher",
+        element: (
+          <AdminRoute>
+            <AddPublisher></AddPublisher>
+          </AdminRoute>
+        ),
       },
     ],
   },

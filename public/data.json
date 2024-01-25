@@ -1,92 +1,14 @@
 [
   {
-    "id": 1,
-    "name": "Argentina Won the FIFA 2022",
-    "image": "https://i.ibb.co/pybFS5J/linel-messi-argentina-fifa-wc-2022-1671389436651-original.jpg",
-    "publisher": "BBC",
-    "tags": ["Sports", "BreakingNews"],
-    "description": "In the heart of Argentina, a nation pulsating with football passion, the euphoric resonance of victory echoes as the final whistle blows, declaring Argentina the triumphant champions of the FIFA World Cup. Tears of joy flow freely, and jubilant cheers reverberate through every street. On the hallowed pitch, players embrace, lifting the coveted trophy high, an emblem of their collective prowess. The streets transform into a sea of blue and white, alive with celebratory chants, fluttering flags, and the brilliant bursts of fireworks. This historic win transcends the realm of sports, becoming a symbol of unity and national pride. Argentina's triumph is etched into the countrys soul, an indelible chapter in the narrative of football glory, inspiring generations to come.    ",
-    "status": "normal"
-  },
-  {
-    "id": 2,
-    "name": "Iphone 15 pro max Published",
-    "image": "https://i.ibb.co/wM6L2qg/free-photo-of-unboxing-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana-qaradaghy-on-ins.jpg",
-    "publisher": "BBC",
-    "tags": ["Technology", "BreakingNews"],
-    "description": "The eagerly awaited iPhone 15 Pro Max has been unveiled, marking the pinnacle of innovation in the world of smartphones. Boasting cutting-edge technology and an exquisite design, it redefines user experience with a stunning display, powerful processing capabilities, and an array of advanced camera features. The sleek and meticulously crafted device reflects Apple's unwavering commitment to pushing the boundaries of mobile technology. With its impressive specifications and features, the iPhone 15 Pro Max stands as a testament to Apple's ongoing legacy of delivering state-of-the-art devices that seamlessly integrate into our digital lives, setting new standards for the future of smartphones.",
-    "status": "normal"
-  },
-  {
-    "id": 3,
-    "name": "Smith falls cheaply in opening debut but Australia nose ahead",
-    "image": "https://i.ibb.co/SdsNc5L/220px-Steve-Smith-48094026552.jpg",
-    "publisher": "CNN",
-    "tags": ["Sports", "BreakingNews"],
-    "description": "In a riveting opening debut, Smith, the much-anticipated talent, faced an unexpected setback as he fell cheaply, leaving cricket enthusiasts on the edge of their seats. However, Australia, displaying resilience and determination, managed to nose ahead in the game. The ebb and flow of the match intensified as the Australian team showcased their prowess, overcoming challenges and asserting their dominance. This thrilling turn of events set the stage for an exciting contest, leaving fans eagerly anticipating the twists and turns that may unfold in the subsequent chapters of this gripping cricket encounter.",
-    "status": "normal"
-  },
-  {
-    "id": 4,
-    "name": "Burger King owner Restaurant Brands buys chains largest U.S. franchisee",
-    "image": "https://i.ibb.co/JHpp73r/623ca076a2e45b00195033e4-width-1000-format-jpeg-auto-webp.jpg",
-    "publisher": "Business Daily",
-    "tags": ["Business", "BreakingNews"],
-    "description": "In a strategic move, Restaurant Brands, the parent company of Burger King, has made a significant acquisition by purchasing the largest U.S. franchisee of the iconic fast-food chain. This transaction not only consolidates Restaurant Brands' position in the competitive quick-service restaurant industry but also signifies a bold step towards expanding their footprint in the United States. The acquisition underscores the company's commitment to strengthening its brand presence, streamlining operations, and capitalizing on the vast potential within the U.S. market. As Restaurant Brands takes control of its largest franchisee, industry analysts and stakeholders are closely watching the impact this move will have on the overall landscape of the fast-food sector.",
-    "status": "normal"
-  },
-  {
-    "id": 5,
-    "name": "Pentagon awards satellite contracts to L3Harris, Lockheed Martin, Sierra Space",
-    "image": "https://i.ibb.co/F3NGvYS/619d2d3f63e3f30018756135-width-1136-format-jpeg.jpg",
-    "publisher": "BBC",
-    "tags": ["Technology", "BreakingNews"],
-    "description": "In a significant development for the aerospace and defense industry, the Pentagon has awarded satellite contracts to major players, including L3Harris, Lockheed Martin, and Sierra Space. The strategic decision highlights the government's commitment to enhancing its satellite capabilities, relying on the expertise of these renowned companies. With L3Harris, Lockheed Martin, and Sierra Space at the forefront, the contracts are poised to advance cutting-edge satellite technologies, strengthening national security, communication networks, and space exploration initiatives. As these industry giants collaborate with the Pentagon, expectations are high for groundbreaking advancements that will shape the future of space-related endeavors and further solidify the United States' position in the global space arena.",
-    "status": "normal"
-  },
-  {
-    "id": 6,
-    "name": "Public Opinion and Foreign Policy Does It Matter, and If So, How?",
-    "image": "https://i.ibb.co/n3jccGv/full.jpg",
-    "publisher": "Bengal Beacon",
-    "tags": ["Foreign", "BreakingNews"],
-    "description": "The intersection of public opinion and foreign policy is a critical and nuanced aspect of governance. The question of its significance hinges on the dynamic relationship between a nation's citizens and its global engagements. Public sentiment can exert substantial influence, shaping diplomatic decisions, and holding policymakers accountable. The connection is multifaceted, as informed public discourse can foster a more transparent and democratic foreign policy landscape. However, the challenge lies in balancing the complexities of international relations with diverse public perspectives. The impact of public opinion on foreign policy is a continual dialogue, where governments must navigate between addressing the concerns of their citizens and pursuing strategic objectives on the global stage.",
-    "status": "normal"
-  },
-  {
-    "id": 7,
-    "name": "How to make Nagpurs famous Orange Barfi at home",
-    "image": "https://i.ibb.co/ZNd2LyK/139-1-070120133664.jpg",
-    "publisher": "Barishal Buzz",
-    "tags": ["LifeStyle", "BreakingNews"],
-    "description": "To recreate Nagpur's famous Orange Barfi at home, start by finely grating fresh Nagpur oranges for their zest, ensuring a burst of citrus flavor. In a pan, combine condensed milk, grated khoya (reduced milk solids), and the orange zest, stirring continuously over medium heat until the mixture thickens. Add a generous amount of ghee and continue cooking until the mixture forms a cohesive mass. Once it reaches the desired consistency, transfer the mixture to a greased tray, spreading it evenly. Allow it to cool, then cut into square or diamond shapes. Garnish with slivered almonds or pistachios for added texture and visual appeal. This homemade Orange Barfi captures the essence of Nagpur's renowned sweet treat, balancing the rich creaminess with the bright and distinctive flavor of local oranges.",
-    "status": "normal"
-  },
-  {
-    "id": 8,
-    "name": "Nothing Phone (2a) coming soon !!!!!!!!!!",
-    "image": "https://i.ibb.co/RcPZzny/Nothing-Phone-2.jpg",
+    "id": "1",
+    "name": "fffffffffff",
     "publisher": "Dhaka Daily",
-    "tags": ["Technology", "BreakingNews"],
-    "description": "The highly anticipated Nothing Phone (2a) is set to make its debut soon, promising innovation and sleek design in the tech world. With a commitment to simplicity and cutting-edge technology, the Nothing Phone aims to redefine the smartphone experience. Speculations suggest a seamless blend of minimalist aesthetics, top-notch features, and an emphasis on user-centric design. As the launch date approaches, tech enthusiasts eagerly await to witness how Nothing, a brand known for its disruptive approach, will make its mark in the competitive smartphone market with the upcoming release of the Nothing Phone (2a).",
-    "status": "normal"
-  },
-  {
-    "id": 9,
-    "name": "Sohan, not Shakib, to skipper Rangpur Riders",
-    "image": "https://i.ibb.co/M8nh5sq/sohan.jpg",
-    "publisher": "Bengal Beacon",
-    "tags": ["Sports", "BreakingNews"],
-    "description": "In a surprising turn of events, Rangpur Riders have named Sohan as the skipper, diverging from the initial expectation of Shakib taking the helm. This unexpected leadership change adds an intriguing dimension to the team dynamics, as Sohan takes charge, bringing his unique approach and strategic prowess to the forefront. Cricket enthusiasts are eager to witness the impact of this captaincy shift on the Rangpur Riders' performance in upcoming matches, highlighting the unpredictability that often characterizes the world of cricket team management and leadership.",
-    "status": "normal"
-  },
-  {
-    "id": 10,
-    "name": "Elon Musk puts the brakes on AI development at Tesla until he gets more control",
-    "image": "https://i.ibb.co/4YY2kCf/elon-musk-net-worth-scaled.webp",
-    "publisher": "Dhaka Daily",
-    "tags": ["Technology", "BreakingNews"],
-    "description": "In a significant move, Elon Musk has decided to halt further development of artificial intelligence (AI) at Tesla until he secures more control over the technology. The decision underscores Musk's cautious approach to AI and the potential risks associated with its rapid advancement. Musk's desire for increased oversight reflects concerns about the ethical implications and safety measures surrounding AI development. As one of the prominent figures in the tech industry, Musk's decision is poised to influence the direction of AI initiatives at Tesla, emphasizing the critical balance between innovation and responsible implementation in the rapidly evolving field of artificial intelligence.",
-    "status": "normal"
+    "description": " In a groundbreaking development that is poised to reshape the landscape of renewable energy, researchers at a leading global institute have announced a revolutionary breakthrough in solar cell technology. The team has successfully engineered a new generation of solar cells that boast unprecedented efficiency levels, surpassing previous industry standards. These cutting-edge solar cells leverage innovative materials and advanced manufacturing techniques, paving the way for a significant leap forward in harnessing clean energy from the sun. This breakthrough holds immense promise for addressing the growing concerns related to climate change and advancing the global transition towards sustainable energy sources. Industry experts and environmentalists alike are hailing this achievement as a pivotal moment in the quest for a greener and more sustainable future. As the world grapples with the imperative of reducing carbon emissions, this scientific milestone offers a ray of hope, signaling a potential paradigm shift in the renewable energy sector. The implications of this breakthrough extend far beyond the realms of academia, with the potential to influence energy policies, economic landscapes, and environmental conservation efforts on a global scale.",
+    "image": "https://i.ibb.co/VwynghS/car-4k-background-yduvczxgolxxu1nk.jpg",
+    "tags": ["Technology"],
+    "email": "emonhossen@gmail.com",
+    "authorName": "emon",
+    "authorImage": "https://i.ibb.co/XsbDqNL/IMG-20230624-235642.jpg",
+    "status": "pending"
   }
 ]

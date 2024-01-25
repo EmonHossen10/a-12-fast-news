@@ -34,10 +34,12 @@ const Home = () => {
         <Header></Header>
         <BreakingNews></BreakingNews>
         <Navbar></Navbar>
+        
         <AllPublisher></AllPublisher>
         <Plans></Plans>
         <Featured></Featured>
-        <TestPurpose></TestPurpose>
+        {/* testpurpose is use for showing modal after 10 seconds */}
+        {/* <TestPurpose></TestPurpose> */}
         <Footer></Footer>
       </div>
     );
