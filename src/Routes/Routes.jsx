@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             <AllArticle></AllArticle>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/articles"),
+        loader: () => fetch("https://fast-news-server.vercel.app/articles"),
       },
       {
         path: "/articleDetails/:id",
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/articles/${params.id}`),
+          fetch(`https://fast-news-server.vercel.app/articles/${params.id}`),
       },
       {
         path: "/addArticle",
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/details/${params.id}`),
+          fetch(`https://fast-news-server.vercel.app/details/${params.id}`),
       },
       {
         path: "/updateArticle/:id",
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allArticles/${params.id}`),
+          fetch(`https://fast-news-server.vercel.app/allArticles/${params.id}`),
       },
       {
         path: "/subscription",
@@ -111,7 +111,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/personalUsers/${params.id}`),
+          fetch(`https://fast-news-server.vercel.app/personalUsers/${params.id}`),
       },
 
       {

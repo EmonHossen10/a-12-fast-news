@@ -18,7 +18,7 @@ const Navbar = () => {
   const { data = [] } = useQuery({
     queryKey: ["data"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/personalUsers");
+      const res = await axios.get("https://fast-news-server.vercel.app/personalUsers");
       // console.log(res.data?.[0].email, "data");
       return res.data;
     },

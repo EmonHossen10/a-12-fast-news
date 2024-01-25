@@ -18,7 +18,7 @@ const AllUsers = () => {
   });
 
   const handleMakeAdmin = (user) => {
-    axios.patch(`http://localhost:5000/users/admin/${user._id}`).then((res) => {
+    axios.patch(`https://fast-news-server.vercel.app/users/admin/${user._id}`).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
         refetch();

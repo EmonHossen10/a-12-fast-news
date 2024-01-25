@@ -14,7 +14,7 @@ const UpdateProfile = () => {
     const image = form.image.value;
     const info = { name, image };
     console.log(info);
-    fetch(`http://localhost:5000/personalUsers/${_id}`, {
+    fetch(`https://fast-news-server.vercel.app/personalUsers/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -19,7 +19,7 @@ const UpdateArticle = () => {
     const newUpdateArticle = { name, image, publisher, description };
 
     console.log(newUpdateArticle);
-    fetch(`http://localhost:5000/allArticles/${_id}`, {
+    fetch(`https://fast-news-server.vercel.app/allArticles/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

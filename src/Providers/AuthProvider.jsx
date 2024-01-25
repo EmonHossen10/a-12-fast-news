@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
         // get token ans store in ls
         const userInfo = { email:currentUser.email};
 
-        axios.post("http://localhost:5000/jwt", userInfo).then((res) => {
+        axios.post("https://fast-news-server.vercel.app/jwt", userInfo).then((res) => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
             // console.log(res.data.token)

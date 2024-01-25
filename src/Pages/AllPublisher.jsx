@@ -8,7 +8,7 @@ const AllPublisher = () => {
   const { data: publishers = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/publishers");
+      const res = await axios.get("https://fast-news-server.vercel.app/publishers");
       // console.log(res.data);
       return res.data;
     },

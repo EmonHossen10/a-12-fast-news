@@ -76,7 +76,7 @@ const AddArticle = () => {
       // Make a request to your backend API to save the article data to MongoDB
       console.log(selectedTags);
       await axios
-        .post("http://localhost:5000/addArticles", {
+        .post("https://fast-news-server.vercel.app/addArticles", {
           name,
           publisher,
           description,

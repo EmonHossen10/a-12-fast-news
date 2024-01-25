@@ -23,7 +23,7 @@ const MyArticle = () => {
     },
   };
 
-  const url = `http://localhost:5000/allArticles?email=${user?.email}`;
+  const url = `https://fast-news-server.vercel.app/allArticles?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -43,7 +43,7 @@ const MyArticle = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/allArticles/${id}`, {
+        fetch(`https://fast-news-server.vercel.app/allArticles/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -24,7 +24,7 @@ const SocialLogin = () => {
           name: loggedUser?.displayName,
           image:loggedUser?.photoURL
         };
-        axios.post("http://localhost:5000/addUsers", userInfo).then((res) => {
+        axios.post("https://fast-news-server.vercel.app/addUsers", userInfo).then((res) => {
           if (res.data.insertedId) {
             console.log("user added to db");
             Swal.fire({

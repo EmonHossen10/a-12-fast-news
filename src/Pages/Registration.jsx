@@ -72,7 +72,7 @@ const Registration = () => {
               image: loggedUser?.photoURL,
             };
             axios
-              .post("http://localhost:5000/addUsers", userInfo)
+              .post("https://fast-news-server.vercel.app/addUsers", userInfo)
               .then((res) => {
                 if (res.data.insertedId) {
                   console.log("user added to db");

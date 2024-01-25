@@ -13,7 +13,7 @@ const CheckoutForm = () => {
   const [currentUser, setCurrentUser] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/personalUsers").then((res) => {
+    axios.get("https://fast-news-server.vercel.app/personalUsers").then((res) => {
       // console.log(res.data)
       setCurrentUser(res.data);
     });
