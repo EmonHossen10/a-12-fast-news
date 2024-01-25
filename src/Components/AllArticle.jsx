@@ -6,7 +6,8 @@ import { useLoaderData } from "react-router-dom";
 
 const AllArticle = () => {
   const data = useLoaderData();
-  console.log(data)
+  // const approval=  data.find(item=>console.log(item.approve)) ;
+  // console.log(approval)
 
   return (
     <div>

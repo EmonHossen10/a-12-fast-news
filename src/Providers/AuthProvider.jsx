@@ -14,8 +14,9 @@ import app from "../firebase.config";
 import axios from "axios";
 
 export const AuthContext = createContext(null);
-
 const auth = getAuth(app);
+
+
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -64,13 +65,15 @@ const AuthProvider = ({ children }) => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
             // console.log(res.data.token)
+            setLoading(false);
           }
         });
       } else {
         // remove token
         localStorage.removeItem("access-token");
+        setLoading(false);
       }
-      setLoading(false);
+      
     });
     return () => {
       unSubscribe();

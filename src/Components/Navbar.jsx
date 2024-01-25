@@ -24,7 +24,7 @@ const Navbar = () => {
     },
   });
   const result = data?.find((item) => item?.email == user?.email);
-  console.log(result);
+  // console.log(result);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);

@@ -20,6 +20,7 @@ import AddPublisher from "../Dashboard/AddPublisher";
 import AdminRoute from "./AdminRoute";
 import AllArticleAdmin from "../Dashboard/AllArticleAdmin";
 import UpdateProfile from "../Pages/UpdateProfile";
+import Payment from "../Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -106,13 +107,17 @@ const router = createBrowserRouter([
         path: "/myProfile/updateProfile/:id",
         element: (
           <PrivateRoute>
-        
             <UpdateProfile></UpdateProfile>
           </PrivateRoute>
         ),
-        loader:({params})=>fetch(`http://localhost:5000/personalUsers/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/personalUsers/${params.id}`),
       },
 
+      {
+        path:"/payment",
+        element:<PrivateRoute><Payment></Payment></PrivateRoute>
+      },
       {
         path: "/login",
         element: <Login></Login>,

@@ -9,7 +9,7 @@ const AllPublisher = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axios.get("http://localhost:5000/publishers");
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     },
   });

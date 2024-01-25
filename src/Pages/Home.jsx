@@ -10,6 +10,8 @@ import Lottie from "react-lottie";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import img from "../Routes/loading.json";
+import Testimonial from "./Testimonial";
+ 
 
 const Home = () => {
   const { loading } = useContext(AuthContext);
@@ -34,12 +36,14 @@ const Home = () => {
         <Header></Header>
         <BreakingNews></BreakingNews>
         <Navbar></Navbar>
+
         
         <AllPublisher></AllPublisher>
         <Plans></Plans>
         <Featured></Featured>
+        <Testimonial></Testimonial>
         {/* testpurpose is use for showing modal after 10 seconds */}
-        {/* <TestPurpose></TestPurpose> */}
+        <TestPurpose></TestPurpose>
         <Footer></Footer>
       </div>
     );

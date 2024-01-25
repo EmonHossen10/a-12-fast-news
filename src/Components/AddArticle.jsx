@@ -16,6 +16,7 @@ const AddArticle = () => {
   console.log(user);
   const dateTime = new Date();
   let type = "normal";
+  let approve=false;
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
   // select form
@@ -87,6 +88,8 @@ const AddArticle = () => {
           status: "pending",
           dateTime,
           type,
+          approve
+          
         })
         .then((res) => {
           console.log(res.data);
